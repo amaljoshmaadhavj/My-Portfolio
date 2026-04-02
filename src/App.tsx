@@ -6,6 +6,7 @@ import { Button } from './components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/Card';
 import { Badge } from './components/ui/Badge';
 import { Code as Github, Briefcase as Linkedin, Mail, ExternalLink, ArrowRight, Code, Database, Cpu, Brain, Layers, Award, CheckCircle2 } from 'lucide-react';
+import profileImage from './assets/AMALJOSH MAADHAV J.jpg';
 
 function App() {
   return (
@@ -14,53 +15,65 @@ function App() {
       <Navbar />
       
       {/* Hero Section */}
-      <section id="home" className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
-        <StaggerWrapper delay={0.1} className="flex flex-col items-start gap-12">
-          <StaggerItem>
-            <StatusIndicator className="bg-transparent border-primary/10" />
-          </StaggerItem>
-          
-          <div className="flex flex-col gap-6 max-w-4xl">
-            <StaggerItem>
-              <h2 className="text-sm md:text-base font-display font-medium uppercase tracking-[0.3em] text-muted-foreground">
-                Amaljosh Maadhav J
-              </h2>
-            </StaggerItem>
-            
-            <StaggerItem>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.1] tracking-tight">
-                AI & DATA SCIENCE <br />
-                UNDERGRADUATE<span className="text-primary">.</span>
-              </h1>
-            </StaggerItem>
-            
-            <StaggerItem>
-              <p className="max-w-2xl text-lg md:text-2xl text-muted-foreground font-light leading-relaxed">
-                Building scalable, production-ready AI systems from data to deployment. 
-                Focused on end-to-end machine learning pipelines.
-              </p>
-            </StaggerItem>
+      <section id="home" className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 items-center max-w-7xl mx-auto w-full">
+          <div className="lg:col-span-2">
+            <StaggerWrapper delay={0.1} className="flex flex-col items-start gap-12">
+              <StaggerItem>
+                <StatusIndicator className="bg-transparent border-primary/10" />
+              </StaggerItem>
+              
+              <div className="flex flex-col gap-6 w-full">
+                <StaggerItem>
+                  <h2 className="text-sm md:text-base font-display font-medium uppercase tracking-[0.3em] text-muted-foreground">
+                    Amaljosh Maadhav J
+                  </h2>
+                </StaggerItem>
+                
+                <StaggerItem>
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight">
+                    AI & DATA SCIENCE <br />
+                    UNDERGRADUATE<span className="text-primary">.</span>
+                  </h1>
+                </StaggerItem>
+                
+                <StaggerItem>
+                  <p className="max-w-2xl text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+                    Building scalable, production-ready AI systems from data to deployment. 
+                    Focused on end-to-end machine learning pipelines.
+                  </p>
+                </StaggerItem>
+              </div>
+              
+              <StaggerItem className="flex flex-wrap gap-6">
+                <Button size="lg" className="rounded-lg px-8 h-14 text-base font-semibold transition-all hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98]" asChild>
+                  <a href="#projects">
+                    View Research & Projects <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
+                </Button>
+                <div className="flex items-center gap-6 border-l border-border pl-6">
+                  <a href="https://github.com/amaljoshmaadhavj" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Github className="w-6 h-6" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/amaljoshmaadhavj/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                  <a href="mailto:amal018josephmathi@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Mail className="w-6 h-6" />
+                  </a>
+                </div>
+              </StaggerItem>
+            </StaggerWrapper>
           </div>
           
-          <StaggerItem className="flex flex-wrap gap-6">
-            <Button size="lg" className="rounded-lg px-8 h-14 text-base font-semibold transition-all hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98]" asChild>
-              <a href="#projects">
-                View Research & Projects <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
-            <div className="flex items-center gap-6 border-l border-border pl-6">
-              <a href="https://github.com/amaljoshmaadhavj" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="w-6 h-6" />
-              </a>
-              <a href="https://www.linkedin.com/in/amaljoshmaadhavj/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="mailto:amal018josephmathi@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                <Mail className="w-6 h-6" />
-              </a>
-            </div>
-          </StaggerItem>
-        </StaggerWrapper>
+          <SectionTransition delay={0.3} className="hidden lg:flex justify-center items-center lg:col-span-1">
+            <img 
+              src={profileImage}
+              alt="Amaljosh Maadhav J" 
+              className="w-full max-w-xs h-auto rounded-lg object-cover shadow-lg"
+            />
+          </SectionTransition>
+        </div>
         
         {/* Subtle Decorative Elements */}
         <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -z-10" />
@@ -270,7 +283,7 @@ function App() {
                      <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-primary/60 mb-8 border-b border-border pb-4">Key Certifications</h3>
                      <div className="space-y-4">
                         <CertItem title="Data Science Bootcamp" issuer="Udemy" />
-                        <CertItem title="Introduction to Tableau" issuer="Simplilearn" />
+                        <CertItem title="Machine Learning Beginner" issuer="Infosys Springboard" />
                         <CertItem title="CUDA at Scale" issuer="Johns Hopkins" />
                         <CertItem title="PyTorch Foundations" issuer="Packt" />
                         <CertItem title="Student Automation Dev" issuer="UiPath" />
@@ -303,7 +316,7 @@ function App() {
             </div>
             <div className="space-y-6">
                <h4 className="text-xs uppercase tracking-[0.3em] text-white/30 font-bold">Location</h4>
-               <p className="text-xl md:text-2xl font-display">University of Petroleum and Energy Studies, India</p>
+               <p className="text-xl md:text-2xl font-display">Saveetha Engineering College, Tamil Nadu, India</p>
             </div>
             <div className="space-y-6">
                <h4 className="text-xs uppercase tracking-[0.3em] text-white/30 font-bold">Social</h4>

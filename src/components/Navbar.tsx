@@ -38,7 +38,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#home" className="text-xl font-bold tracking-tighter uppercase group flex items-center gap-2">
           <span className="w-6 h-6 bg-primary flex items-center justify-center text-[10px] text-primary-foreground font-black group-hover:rotate-90 transition-transform duration-500">A</span>
-          AMALJOSH<span className="text-primary opacity-30">.</span>
+          AJM<span className="text-primary opacity-30">.</span>
         </a>
 
         <div className="hidden md:flex items-center gap-10">

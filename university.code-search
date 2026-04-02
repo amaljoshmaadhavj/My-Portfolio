@@ -1,0 +1,9 @@
+# Query: university
+# ContextLines: 1
+
+1 result - 1 file
+
+src\App.tsx:
+  305                 <h4 className="text-xs uppercase tracking-[0.3em] text-white/30 font-bold">Location</h4>
+  306:                <p className="text-xl md:text-2xl font-display">Saveetha Engineering College, Chennai</p>
+  307              </div>
