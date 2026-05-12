@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -58,6 +58,9 @@ export const Navbar = () => {
           >
             Connect
           </a>
+
+          {/* Resume dropdown: View / Download */}
+          <ResumeDropdown />
         </div>
       </div>
       
@@ -67,5 +70,59 @@ export const Navbar = () => {
         style={{ scaleX }}
       />
     </nav>
+  );
+};
+
+const ResumeDropdown = () => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const filePath = '/resume/Amaljosh%20Maadhav%20J%20Resume.pdf';
+  const downloadName = 'Amaljosh_Maadhav_J_Resume.pdf';
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen((s) => !s)}
+        className="bg-primary text-background text-xs uppercase tracking-[0.2em] font-bold px-6 py-2 rounded-md shadow-md hover:opacity-95 transition-all duration-200 flex items-center gap-2"
+        aria-expanded={open}
+        aria-haspopup="menu"
+      >
+        RESUME
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+          <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute right-0 mt-2 w-44 bg-background border border-border rounded-md shadow-lg z-50 overflow-hidden">
+          <a
+            href={filePath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted-foreground/5"
+          >
+            View
+          </a>
+          <a
+            href={filePath}
+            download={downloadName}
+            className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted-foreground/5"
+          >
+            Download
+          </a>
+        </div>
+      )}
+    </div>
   );
 };

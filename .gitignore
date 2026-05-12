@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files
+.env
+.env.*
+
+# Vite / cache / coverage
+.vite
+.cache
+coverage
+
+# Personal resume (do not commit private resume files)
+public/resume/
+Resume.pdf
+resume.pdf
+
+# Misc
+npm-debug.log*

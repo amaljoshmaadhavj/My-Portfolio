@@ -1,14 +1,17 @@
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { CustomCursor } from './components/CustomCursor';
 import { SectionTransition, StaggerWrapper, StaggerItem } from './components/SectionTransition';
 import { StatusIndicator } from './components/StatusIndicator';
+import { Timeline } from './components/Timeline';
 import { Button } from './components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/Card';
 import { Badge } from './components/ui/Badge';
-import { Code as Github, Briefcase as Linkedin, Mail, ExternalLink, ArrowRight, Code, Database, Cpu, Brain, Layers, Award, CheckCircle2 } from 'lucide-react';
+import { Code as Github, Briefcase as Linkedin, Mail, ExternalLink, ArrowRight, Code, Database, Cpu, Brain, Layers, Award, CheckCircle2, ChevronDown } from 'lucide-react';
 import profileImage from './assets/AMALJOSH MAADHAV J.jpg';
 
 function App() {
+  const [showMoreProjects, setShowMoreProjects] = useState(false);
   return (
     <div className="relative min-h-screen font-sans selection:bg-primary/10 selection:text-foreground bg-subtle-mesh overflow-x-hidden">
       <CustomCursor />
@@ -94,18 +97,17 @@ function App() {
           <div className="lg:col-span-7">
             <SectionTransition delay={0.1}>
               <p className="text-xl md:text-3xl font-normal leading-relaxed text-foreground/80 mb-12 italic border-l-4 border-primary/10 pl-8">
-                "Building end-to-end machine learning systems that bridge the gap between academic research and production environments."
+                "Building intelligent AI systems that solve real-world problems through data, automation, and scalable machine learning.”
               </p>
             </SectionTransition>
             
             <StaggerWrapper className="space-y-8 text-lg text-muted-foreground leading-relaxed">
               <StaggerItem>
-                Applied AI and Data Science undergraduate specializing in NLP, Computer Vision, and predictive analytics. 
-                Focusing on building intelligent systems like recruitment automation platforms and clinical risk prediction tools.
+                Applied AI & Data Science undergraduate passionate about Data Science, Machine Learning, and AI Engineering.
+                Focused on creating impactful solutions in areas like cyber forensics, predictive analytics, recruitment automation, and intelligent decision systems.
               </StaggerItem>
               <StaggerItem>
-                Active practitioner of modern AI architectures including Transformers, RAG (Retrieval-Augmented Generation), 
-                and microservice-based ML deployment.
+                Currently exploring NLP, RAG systems, cyber investigation AI, and scalable deployment architectures while preparing for Data Scientist and ML Engineer roles.
               </StaggerItem>
             </StaggerWrapper>
           </div>
@@ -114,20 +116,32 @@ function App() {
              <SectionTransition delay={0.3} className="space-y-4">
                 <h3 className="font-display font-bold uppercase text-xs tracking-widest text-primary opacity-60">Focus</h3>
                 <ul className="space-y-2 text-sm">
-                   <li>Scalable Models</li>
-                   <li>Production Pipelines</li>
-                   <li>Explainable AI</li>
+                   <li>Predictive Modeling</li>
+                   <li>NLP & RAG</li>
+                   <li>AI Product Development </li>
                 </ul>
              </SectionTransition>
              <SectionTransition delay={0.4} className="space-y-4">
                 <h3 className="font-display font-bold uppercase text-xs tracking-widest text-primary opacity-60">Interests</h3>
                 <ul className="space-y-2 text-sm">
-                   <li>Legal AI</li>
-                   <li>Clinical Triage</li>
-                   <li>Cyber Forensics</li>
+                   <li>Data Analytics</li>
+                   <li>Cyber AI</li>
+                   <li>Intelligent Systems</li>
                 </ul>
              </SectionTransition>
           </div>
+        </div>
+
+        {/* My Journey Timeline */}
+        <div className="max-w-7xl mx-auto mt-32">
+          <SectionTransition className="mb-20">
+            <h2 className="text-3xl md:text-4xl font-display font-bold inline-flex items-center gap-4">
+              <span className="w-12 h-[1px] bg-primary/20"></span>
+              My Journey
+            </h2>
+          </SectionTransition>
+          
+          <Timeline />
         </div>
       </section>
 
@@ -191,50 +205,95 @@ function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <ProjectCard 
+              title="FlipVision"
+              category="AI Commerce & Computer Vision"
+              problem="Manual product verification and freshness assessment in e-commerce systems are time-consuming and inconsistent."
+              solution="Built an AI-powered e-commerce platform using YOLO, PaddleOCR, and ResNet50 to detect brands, assess freshness, and extract expiry dates from product images."
+              impact="Improves product quality assurance, automates inventory verification, and enhances intelligent retail workflows."
+              tech={["YOLO", "PaddleOCR", "Django", "ResNet50"]}
+              link="https://github.com/amaljoshmaadhavj/FlipVision.git"
+            />
+            <ProjectCard 
               title="REVA AI"
-              category="Automation & Document Intel"
-              problem="The recruitment process for manual document verification is slow and prone to human error."
-              solution="Implemented a federated microservices architecture using YOLO and PaddleOCR for automated document intelligence."
-              impact="Created a unified, tamper-resistant system for candidate verification and document extraction."
-              tech={["PaddleOCR", "YOLO", "Node.js", "MongoDB"]}
-              link="https://github.com/vishal23000591/Project-REVA-AI.git"
+              category="Recruitment Automation & Document Intel"
+              problem="Traditional recruitment and document verification workflows are slow, fragmented, and prone to tampering."
+              solution="Developed a federated AI ecosystem integrating OCR, ATS scoring, interview simulation, skill analysis, and intelligent verification modules."
+              impact="Creates a scalable and secure AI-driven hiring ecosystem with automated candidate evaluation and document authentication."
+              tech={["React", "FastAPI", "MongoDB", "DocTR OCR"]}
+              link="https://github.com/amaljoshmaadhavj/REVA-AI.git"
             />
             <ProjectCard 
               title="TRIAGEON"
               category="Clinical Health Tech"
-              problem="Patient risk assessment in clinical environments is often delayed, affecting decision-making speed."
-              solution="Built a machine learning-powered healthcare triage system to prioritize patient risk in real-time."
-              impact="Provides clinical teams with explainable AI outputs to guide urgency prioritization without replacing diagnosis."
-              tech={["Python", "Scikit-Learn", "React", "FastAPI"]}
+              problem="Delayed identification of high-risk patients often leads to poor healthcare prioritization and avoidable complications."
+              solution="Built an ML-powered digital triage platform for disease risk prediction, urgency classification, and explainable patient prioritization."
+              impact="Enables faster medical risk assessment and supports healthcare teams with intelligent urgency-aware recommendations."
+              tech={["Python", "React", "Flask", "Scikit-Learn"]}
               link="https://github.com/amaljoshmaadhavj/Triageon.git"
             />
             <ProjectCard 
               title="TraceGuard AI"
               category="Cyber Forensics"
-              problem="Forensic log analysis is often a locked-cloud or online process, sacrificing data privacy."
-              solution="Developed an offline AI assistant using RAG and local LLMs (Ollama) to detect security threats in logs."
-              impact="Enables secure, private investigation of Windows Event Logs and network traffic (.pcap) in isolated environments."
-              tech={["Ollama", "FAISS", "RAG", "Python"]}
+              problem="Most forensic investigation systems rely on cloud infrastructure, risking privacy and offline accessibility."
+              solution="Created an offline AI-powered cyber investigation assistant using RAG, FAISS, and local LLMs for forensic evidence analysis."
+              impact="Supports secure investigation of Windows Event Logs and network traffic in isolated and privacy-focused environments."
+              tech={["Ollama", "FAISS", "Python", "RAG"]}
               link="https://github.com/amaljoshmaadhavj/TraceGuard-AI.git"
             />
             <ProjectCard 
               title="MatExtractAI"
               category="Research Automation"
-              problem="Unstructured research PDFs are difficult to convert into structured, machine-readable datasets."
-              solution="Utilized hybrid parsing (PyMuPDF / Camelot) and multi-agent local LLMs for evidence-backed extraction."
-              impact="Automated the generation of evidence-backed datasets, significantly reducing research data-entry time."
-              tech={["PyMuPDF", "Camelot", "Local LLMs", "Pandas"]}
+              problem="Scientific research PDFs are difficult to convert into structured and machine-readable datasets."
+              solution="Designed an AI-powered extraction pipeline using local LLM agents and hybrid PDF parsing for evidence-backed material science data extraction."
+              impact="Automates scientific data extraction workflows while improving research traceability and reproducibility."
+              tech={["PyMuPDF", "Camelot", "Next.js", "Local LLMs"]}
               link="https://github.com/amaljoshmaadhavj/MatExtractAI.git"
             />
+            <ProjectCard 
+              title="INYA Airlines"
+              category="Travel & Booking Systems"
+              problem="Lightweight flight booking systems often lack simple APIs for reservation tracking and cancellation workflows."
+              solution="Developed a RESTful flight booking API supporting reservations, booking status tracking, multilingual responses, and refund calculations."
+              impact="Simplifies airline reservation workflows with fast and lightweight backend operations."
+              tech={["Node.js", "Express.js", "REST API", "JSON Storage"]}
+              link="https://github.com/amaljoshmaadhavj/INYA-Airlines.git"
+            />
           </div>
-          
-          <SectionTransition className="mt-16 text-center">
-            <Button variant="outline" className="h-14 px-12 rounded-lg border-primary/20 hover:bg-white hover:border-primary/50 transition-all" asChild>
-               <a href="https://github.com/amaljoshmaadhavj" target="_blank" className="flex items-center gap-3">
-                  <Github className="w-5 h-5" /> Explore all repositories
-               </a>
+
+          {/* Explore More Projects Button */}
+          <SectionTransition className="mt-20 flex justify-center">
+            <Button 
+              onClick={() => setShowMoreProjects(!showMoreProjects)}
+              className="h-14 px-8 rounded-lg font-semibold transition-all hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/5 active:scale-[0.98] flex items-center gap-3"
+            >
+              Explore More Projects
+              <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${showMoreProjects ? 'rotate-180' : ''}`} />
             </Button>
           </SectionTransition>
+
+          {/* Additional Projects - Expandable Section */}
+          <div className={`mt-16 overflow-hidden transition-all duration-700 ${showMoreProjects ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-8">
+              <ProjectCard 
+                title="InterviewIQ"
+                category="AI Interview & Career Assistance"
+                problem="Candidates lack realistic interview practice environments with detailed performance feedback."
+                solution="Built an AI-powered interview practice platform with resume analysis, real-time evaluation, and intelligent feedback systems."
+                impact="Helps candidates improve technical interview performance through personalized AI-driven assessments."
+                tech={["Next.js", "FastAPI", "OpenRouter", "Node.js"]}
+                link="https://github.com/amaljoshmaadhavj/InterviewIQ.git"
+              />
+              <ProjectCard 
+                title="ArthroCare AI"
+                category="AI Clinical Decision Support"
+                problem="Rheumatoid Arthritis is frequently underdiagnosed due to inconsistent symptom interpretation and fragmented analysis."
+                solution="Developed an intelligent clinical decision support system for RA risk prediction, longitudinal monitoring, and personalized recommendations."
+                impact="Supports early detection and personalized healthcare guidance using explainable machine learning models."
+                tech={["React", "Python", "Node.js", "XGBoost"]}
+                link="https://github.com/santhoshr-15/arthrocare-ai.git"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
